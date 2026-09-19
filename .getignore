@@ -1,0 +1,86 @@
+# ===================== C++ =====================
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.pdb
+*.ilk
+*.idb
+build/
+Debug/
+Release/
+x64/
+out/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+.cache/
+compile_commands.json
+
+# ===================== C# / .NET =====================
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.csproj.user
+*.sln.docstates
+packages/
+*.nupkg
+project.lock.json
+artifacts/
+
+# ===================== Unity =====================
+# Папки, генерируемые Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]serSettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Автогенерируемые проектные файлы
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+
+# Unity3D сгенерированное
+sysinfo.txt
+*.stackdump
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===================== Прочее =====================
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
