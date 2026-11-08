@@ -1,0 +1,12 @@
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.idb
+build/
+Debug/
+Release/
+x64/
+bin/
+obj/
+
