@@ -18,11 +18,11 @@ namespace planetary {
         double m_orbitRadius;
         double m_angle;
 
-        const Star* m_hostStar;
+        std::weak_ptr<Star> m_hostStar;   // агрегация: звездой владеет кто-то другой
         std::vector<std::unique_ptr<Satellite>> m_satellites;
 
         public:
-        Planet(const std::string& name, double mass, double orbitRadius, const Star* hostStar);
+        Planet(const std::string& name, double mass, double orbitRadius, const std::shared_ptr<Star>& hostStar);
         ~Planet();
 
 
@@ -39,7 +39,7 @@ namespace planetary {
         [[nodiscard]] double GetMass() const {return m_mass; }
         [[nodiscard]] double GetOrbitRadius() const {return m_orbitRadius; }
         [[nodiscard]] std::size_t GetSatelliteCount() const { return m_satellites.size(); }
-        [[nodiscard]] const Star* GetHostStar() const {return m_hostStar;}
+        [[nodiscard]] std::shared_ptr<Star> GetHostStar() const { return m_hostStar.lock(); }
 
     };
 }

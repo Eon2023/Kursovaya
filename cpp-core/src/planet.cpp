@@ -9,20 +9,20 @@
 namespace planetary 
 {
 
-Planet::Planet(const std::string& name, double mass, double orbitRadius, const Star* hostStar):
+Planet::Planet(const std::string& name, double mass, double orbitRadius, const std::shared_ptr<Star>& hostStar):
 m_name {name},
 m_mass {mass},
 m_orbitRadius {orbitRadius},
 m_angle {0.0},
 m_hostStar {hostStar}
 {
-    if (m_hostStar == nullptr)
+    if (!hostStar)
     {
         std::cerr << "Ошибка: планета '" << m_name << "' создана без домашней звезды.\n";
     }
-    else if (!m_hostStar->CanHostPlanet(m_orbitRadius))
+    else if (!hostStar->CanHostPlanet(m_orbitRadius))
     {
-        std::cerr << "Ошибка: планета '" << m_name << "' слишком близко к звезде '" << m_hostStar->GetName() << "'. Орбита скорректирована.\n";
+        std::cerr << "Ошибка: планета '" << m_name << "' слишком близко к звезде '" << hostStar->GetName() << "'. Орбита скорректирована.\n";
     }
     if (m_mass <= 0.0)
         {
@@ -66,8 +66,10 @@ void Planet::Print() const {
               << ", радиус орбиты = " << m_orbitRadius
               << ", угол = " << m_angle;
 
-    if (m_hostStar != nullptr) {
-        std::cout << ", вокруг звезды: " << m_hostStar->GetName();
+    if (const auto hostStar = m_hostStar.lock()) {
+        std::cout << ", вокруг звезды: " << hostStar->GetName();
+    } else {
+        std::cout << ", звезда недоступна (объект уже уничтожен)";
     }
     std::cout << "\n";
 
